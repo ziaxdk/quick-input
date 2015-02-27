@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="ctrl as c">
+    <div ng-repeat="d in c.data">{{d.id}} - {{d.val}} - {{d.status}}</div>
+    <hr/>
+    <form name="theForm" ng-submit="c.submit();">
+      <input type="text" name="input" ng-model="c.input" />
+    </form>
+  </body>
+</html>
