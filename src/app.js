@@ -8,9 +8,11 @@
     w.onerror = function(e) { console.log('worker error: ', e); };
     w.onmessage = function(m) {
       var data = m.data;
+//      console.log('client data', data, _t.data);
       _t.data.forEach(function(e) {
-        if (e.id === data.id) {
-          e.status = (data.status == true) ? 'ok' : 'err';
+        var mat = _.find(data, function(p) { return p.id === e.id; });
+        if (mat) {
+          e.status = (mat.status == true) ? 'ok' : 'err';
           $scope.$digest();
         }
       });
@@ -24,6 +26,9 @@
       this.input = null;
       w.postMessage(data);
     }
+
+
+
   });
 
 }());
